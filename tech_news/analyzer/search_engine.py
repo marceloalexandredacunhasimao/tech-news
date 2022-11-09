@@ -19,13 +19,13 @@ def search_by_date(date):
     query = {"timestamp": search_date}
     complete_news = search_news(query)
     return [(news["title"], news["url"]) for news in complete_news]
-    
-
 
 
 # Requisito 8
 def search_by_tag(tag):
-    """Seu código deve vir aqui"""
+    query = {"tags": {"$regex": tag, "$options": "i"}}
+    complete_news = search_news(query)
+    return [(news["title"], news["url"]) for news in complete_news]
 
 
 # Requisito 9

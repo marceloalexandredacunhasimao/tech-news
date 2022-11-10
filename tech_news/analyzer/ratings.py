@@ -21,4 +21,4 @@ def top_5_categories():
     if len(count) == 0:
         return []
     count = sorted(count, key=lambda c: (-c[1], c[0]))
-    return [category for category, _ in count]
+    return [category for category, _ in count[0:5]]

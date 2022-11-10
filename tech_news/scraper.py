@@ -41,10 +41,8 @@ def scrape_noticia(html_content):
         comments_count = 0
     else:
         comments_count = int(comments_count.strip().split(" ")[0])
-    # summary = selector.css(".entry-content p::text").get().strip()
     summary = selector.css(".entry-content > p:first-of-type *::text").getall()
     summary = "".join(summary).strip()
-    # print("<<<<<"+summary+">>>>>")
     tags = selector.css(".post-tags ul li a::text").getall()
     category = selector.css("span.label::text").get()
     return {
@@ -64,7 +62,6 @@ def get_tech_news(amount):
     count = 0
     news = []
     next = "https://blog.betrybe.com/"
-    # next = scrape_next_page_link(next)
     while count < amount:
         response = fetch(next)
         pages_links = scrape_novidades(response)
